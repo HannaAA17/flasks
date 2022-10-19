@@ -5,8 +5,6 @@ from flask import Flask, request, render_template, session, flash, redirect, url
 from flask_mail import Mail, Message
 from celery import Celery
 
-from google.colab.output import eval_js # only in colab
-
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'top-secret!'
@@ -24,7 +22,7 @@ app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
 app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
 
 # colab configuration
-COLAB_DOMAIN = str(eval_js("google.colab.kernel.proxyPort(8999)"))
+COLAB_DOMAIN = 'https://g0r6zuwo986-496ff2e9c6d22116-8999-colab.googleusercontent.com/'
 
 # Initialize extensions
 mail = Mail(app)
