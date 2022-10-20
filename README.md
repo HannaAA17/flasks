@@ -1,7 +1,10 @@
 Using Celery with Flask
 =======================
 
-This [repository](https://github.com/miguelgrinberg/flask-celery-example) contains the example code for my blog article [Using Celery with Flask](http://blog.miguelgrinberg.com/post/using-celery-with-flask).
+[ORIGINAL REPOSITORY LINK](https://github.com/miguelgrinberg/flask-celery-example)
+
+
+This repository contains the example code for blog article [Using Celery with Flask](http://blog.miguelgrinberg.com/post/using-celery-with-flask).
 
 The application provides two examples of background tasks using Celery:
 
