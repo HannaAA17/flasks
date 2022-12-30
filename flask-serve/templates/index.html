@@ -1,0 +1,57 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let butt = document.querySelector("#download");
+        
+        butt.addEventListener("click", async function () {
+          const resp = await fetch("/serve");
+          const blob = await resp.blob();
+
+          // convert the file into url
+          const url = window.URL.createObjectURL(blob);
+
+          // the a tag
+          const a = document.createElement("a");
+          a.style.display = "none";
+          a.href = url;
+
+          // the filename you want
+          a.download = resp.headers.get("filename");
+
+          // add the tag to the document
+          document.body.appendChild(a);
+
+          // click the link ( download the file )
+          a.click();
+
+          // release or remove the url
+          window.URL.revokeObjectURL(url);
+
+          // success message
+          alert("your file has downloaded!"); // or you know, something with better UX...
+        });
+      });
+
+      function Download() {
+        document.getElementById('my_iframe').src = '/serve';
+      };
+    </script>
+    <title>Test Download</title>
+  </head>
+  
+  <body>
+    <h1>Hello</h1>
+    
+    <button id="download">Download!</button>
+    <button onclick="Download()">Download!</button>
+    
+    <a href="javascript:window.open('/serve', '_blank');"> download2 </a>
+    
+    <iframe id="my_iframe" style="display:none;"></iframe>
+  </body>
+</html>
