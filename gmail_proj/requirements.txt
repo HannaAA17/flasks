@@ -26,5 +26,5 @@ rsa==4.9
 six==1.16.0
 uritemplate==4.1.1
 urllib3==1.26.13
-Werkzeug==2.2.2
+Werkzeug==2.2.3
 WTForms==3.0.1
