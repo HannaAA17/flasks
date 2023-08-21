@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <main class="container signup-section">
+    <div class="section-content">
+      <h2>Create an account</h2>
+
+      <form method="POST" action="{{ url_for('signup') }}" novalidate>
+        {{ form.hidden_tag }}
+        
+        {% for field_name, field in form._fields.items() %}
+          {% if field.type != 'SubmitField' %}
+            <div class="form-group">
+              {# field label #}
+              {{ field.label }}
+              
+              {# field errors #}
+              {% if field.errors %}
+                {% for error in field.errors %}
+                  <p class="error-message"> {{ error }} </p>
+                {% endfor %}
+              {% endif %}
+
+              {# field content #}
+              {{ field }}
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        {{ form.submit(class="btn-primary") }}
+      </form>
+
+    </div>
+  </main>
+{% endblock content %}
